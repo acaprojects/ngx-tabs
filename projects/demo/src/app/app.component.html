@@ -1,6 +1,27 @@
 <div class="app">
     <div class="test">
-        <a-checkbox [(ngModel)]="model.state" label="Test is a label"></a-checkbox>
-        {{model.state}}
+        <a-tab-group>
+            <a-tab id="home" [content]="tab1">
+                    <div class="text">Home</div>
+                <ng-template #tab1>Template contents</ng-template>
+            </a-tab>
+            <a-tab id="contact" [content]="html_content">
+                <div class="text">Contact</div>
+            </a-tab>
+            <a-tab id="home" [content]="tab1">
+                    <div class="text">Tab2</div>
+                <ng-template #tab2>Template contents</ng-template>
+            </a-tab>
+            <a-tab id="contact" [content]="html_content">
+                <div class="text">Contact</div>
+            </a-tab>
+            <a-tab id="home" [content]="tab1">
+                    <div class="text">Home</div>
+                <ng-template #tab3>T contents</ng-template>
+            </a-tab>
+            <a-tab id="contact" [content]="html_content">
+                <div class="text">Contact</div>
+            </a-tab>
+        </a-tab-group>
     </div>
 </div>

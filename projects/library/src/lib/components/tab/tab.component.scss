@@ -1,0 +1,31 @@
+
+.tab {
+    padding: .5em .75em;
+    border-radius: 4px 4px 0 0;
+    border: 1px solid #ccc;
+    margin-left: .5em;
+    color: rgba(#000, .6);
+    background-color: #fff;
+    transition: color 200ms, background-color 200ms, border-color 200ms;
+    cursor: pointer;
+    max-width: 24em;
+
+    &:last-child {
+        margin-right: .5em;
+    }
+
+    &:hover {
+        color: rgba(#000, .85);
+        background-color: #f0f0f0;
+    }
+}
+
+* {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.active {
+    border-bottom-color: #fff;
+    color: rgba(#000, .85);
+}

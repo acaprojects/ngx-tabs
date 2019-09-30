@@ -1,16 +1,22 @@
 <div class="tab-group" widget>
     <header class="header">
-        <ng-contents></ng-contents>
+        <div class="tab-headers" #headers [style.left]="-left_offset + 'px'">
+            <ng-content></ng-content>
+        </div>
+        <div class="scroll-zone" (scroll)="updateOffset($event)">
+            <div class="block" [style.width]="header_width + 'px'"></div>
+        </div>
     </header>
     <main class="body">
         <ng-container [ngSwitch]="method">
-            <div *ngSwitchCase="'text'" [innerHTML]="content"></div>
             <ng-container *ngSwitchCase="'template'">
                 <ng-container *ngTemplateOutlet="content; context: context"></ng-container>
             </ng-container>
-
             <ng-container *ngSwitchCase="'component'">
                 <ng-container *ngComponentOutlet="content"></ng-container>
+            </ng-container>
+            <ng-container *ngSwitchCase="'text'">
+                <div [innerHTML]="content | safe"></div>
             </ng-container>
         </ng-container>
     </main>

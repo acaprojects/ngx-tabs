@@ -12,4 +12,6 @@ import * as dayjs from 'dayjs';
 export class AppComponent {
     public model: { [name: string]: any } = {};
 
+    public html_content: string = `<div class="html-content">HTML Content</div>`;
+
 }

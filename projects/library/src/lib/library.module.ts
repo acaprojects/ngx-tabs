@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { APipesModule } from '@acaprojects/ngx-pipes';
 
 import { version } from './settings';
 import { TabGroupComponent } from './components/tab-group/tab-group.component';
@@ -13,8 +14,11 @@ const dayjs = dayjs_api;
         TabGroupComponent,
         TabComponent
     ],
-    imports: [CommonModule],
-    exports: []
+    imports: [CommonModule, APipesModule],
+    exports: [
+        TabGroupComponent,
+        TabComponent
+    ]
 })
 export class LibraryModule {
     public static version = 'local-dev';
@@ -31,5 +35,5 @@ export class LibraryModule {
     }
 }
 
-export { LibraryModule as ACA_CHECKBOX_MODULE };
-export { LibraryModule as ACheckboxModule };
+export { LibraryModule as ACA_TABS_MODULE };
+export { LibraryModule as ATabsModule };

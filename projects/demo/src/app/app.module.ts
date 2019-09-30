@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ACheckboxModule } from 'projects/library/src/public-api';
+import { ATabsModule } from 'projects/library/src/public-api';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    ACheckboxModule,
+    ATabsModule,
     FormsModule,
     BrowserAnimationsModule,
   ],
