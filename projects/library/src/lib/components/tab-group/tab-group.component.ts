@@ -12,7 +12,7 @@ import {
     EventEmitter
 } from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
-import { InjectableContent, InjectableContentType } from '../../types';
+import { InjectableContentType } from '../../types';
 
 @Component({
     selector: 'a-tab-group',
@@ -28,19 +28,20 @@ export class TabGroupComponent implements OnInit {
     public left_offset = 0;
     /** Width of the header block */
     public header_width = 0;
-
-    /** List of tabs to display */
-    @ContentChildren(TabComponent) private tab_list: QueryList<TabComponent>;
-    /** Element block containing header elements */
-    @ViewChild('headers', { static: true }) private headers: ElementRef<HTMLDivElement>;
+    
     /** Update block width after window resize */
-    @HostListener('window:resize', ['$event'])
-    private resize() {
+    @HostListener('window:resize')
+    public resize() {
         if (this.headers && this.headers.nativeElement) {
             const box = this.headers.nativeElement.getBoundingClientRect();
             this.header_width = box.width;
         }
     }
+
+    /** List of tabs to display */
+    @ContentChildren(TabComponent) private tab_list: QueryList<TabComponent>;
+    /** Element block containing header elements */
+    @ViewChild('headers', { static: true }) private headers: ElementRef<HTMLDivElement>;
 
     /** Active tab to display contents for */
     public get active_tab(): TabComponent {
@@ -49,7 +50,7 @@ export class TabGroupComponent implements OnInit {
     }
 
     /** Contents of the active tab to display */
-    public get content(): InjectableContent {
+    public get content(): any {
         const tab = this.active_tab;
         return (tab ? tab.content : '') || '';
     }

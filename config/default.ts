@@ -37,7 +37,7 @@ gulp.task('version:update', () => {
     const b = dayjs().startOf('s').valueOf();
     return gulp.src([`${library_path}/src/lib/library.module.ts`]) // Any file globs are supported
         .pipe(replace(/public static version = '[0-9a-zA-Z.-]*'/g, `public static version = '${v}'`, { logs: { enabled: true } }))
-        .pipe(replace(/private build = dayjs\([0-9]*\);/g, `private build = dayjs(${b});`, { logs: { enabled: true } }))
+        .pipe(replace(/readonly build = dayjs\([0-9]*\);/g, `readonly build = dayjs(${b});`, { logs: { enabled: true } }))
         .pipe(gulp.dest(`${library_path}/src/lib`));
 });
 
@@ -47,7 +47,7 @@ gulp.task('version:clean', () => {
     const b = dayjs().startOf('s').valueOf();
     return gulp.src([`${library_path}/src/lib/library.module.ts`]) // Any file globs are supported
         .pipe(replace(/public static version = '[0-9a-zA-Z.-]*'/g, `public static version = 'local-dev'`, { logs: { enabled: true } }))
-        .pipe(replace(/private build = dayjs\([0-9]*\);/g, `private build = dayjs();`, { logs: { enabled: true } }))
+        .pipe(replace(/readonly build = dayjs\([0-9]*\);/g, `readonly build = dayjs();`, { logs: { enabled: true } }))
         .pipe(gulp.dest(`${library_path}/src/lib`));
 });
 

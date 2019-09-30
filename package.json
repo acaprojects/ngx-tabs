@@ -1,6 +1,6 @@
 {
   "name": "ngx-tabs-project",
-  "version": "0.0.0-development",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +11,8 @@
     "publish": "gulp build && npm publish dist/library",
     "semantic-release": "semantic-release",
     "test:ci": "ng test library --watch=false --browsers=ChromeHeadless",
-    "postpublish": "cp -r ./dist/library/package.json ./projects/library/"
+    "postpublish": "cp -r ./dist/library/package.json ./projects/library/",
+    "postversion": "gulp build"
   },
   "private": true,
   "dependencies": {
