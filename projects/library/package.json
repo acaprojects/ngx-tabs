@@ -1,0 +1,20 @@
+{
+  "name": "@acaprojects/ngx-tabs",
+  "version": "0.2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "angular",
+    "pipes"
+  ],
+  "description": "Assortment of Pipes for Angular 8+",
+  "homepage": "https://github.com/acaprojects/ngx-tabs#readme",
+  "bugs": {
+      "url": "https://github.com/acaprojects/ngx-tabs/issues"
+  },
+  "peerDependencies": {
+    "@angular/common": "^8.0.0",
+    "@angular/core": "^8.0.0"
+  }
+}
