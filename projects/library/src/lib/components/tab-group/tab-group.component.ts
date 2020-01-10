@@ -47,7 +47,7 @@ export class TabGroupComponent implements OnInit {
     /** Active tab to display contents for */
     public get active_tab(): TabComponent {
         const list = this.tab_list ? this.tab_list.toArray() : [];
-        return list.find(i => i.active);
+        return list.find(i => i.active) || list[0];
     }
 
     /** Contents of the active tab to display */
