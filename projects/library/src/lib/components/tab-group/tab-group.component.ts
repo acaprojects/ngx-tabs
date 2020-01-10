@@ -9,7 +9,8 @@ import {
     TemplateRef,
     Input,
     Output,
-    EventEmitter
+    EventEmitter,
+    SimpleChanges
 } from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
 import { InjectableContentType } from '../../types';
@@ -28,7 +29,7 @@ export class TabGroupComponent implements OnInit {
     public left_offset = 0;
     /** Width of the header block */
     public header_width = 0;
-    
+
     /** Update block width after window resize */
     @HostListener('window:resize')
     public resize() {
@@ -69,6 +70,14 @@ export class TabGroupComponent implements OnInit {
         this.resize();
     }
 
+    public ngOnChanges(changes: SimpleChanges): void {
+        if (changes.tab && this.tab) {
+            const list = this.tab_list.toArray();
+            list.forEach(tab => tab.active = this.tab === tab.id);
+        }
+
+    }
+
     public ngAfterContentInit(): void {
         const list = this.tab_list.toArray();
         for (const tab of list) {
@@ -82,7 +91,12 @@ export class TabGroupComponent implements OnInit {
             });
         }
         const active = list.find(i => i.id === this.tab);
-        active ? active.active = true : list[0].active = true;
+        if (active) {
+            active.active = true;
+        } else {
+            list[0].active = true
+            this.tab = list[0].id
+        }
         this.resize();
     }
 
