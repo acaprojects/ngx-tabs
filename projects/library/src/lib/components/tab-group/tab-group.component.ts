@@ -46,7 +46,7 @@ export class TabGroupComponent implements OnInit {
 
     /** Active tab to display contents for */
     public get active_tab(): TabComponent {
-        const list = this.tab_list.toArray();
+        const list = this.tab_list ? this.tab_list.toArray() : [];
         return list.find(i => i.active);
     }
 
@@ -72,14 +72,14 @@ export class TabGroupComponent implements OnInit {
 
     public ngOnChanges(changes: SimpleChanges): void {
         if (changes.tab && this.tab) {
-            const list = this.tab_list.toArray();
+            const list = this.tab_list ? this.tab_list.toArray() : [];
             list.forEach(tab => tab.active = this.tab === tab.id);
         }
 
     }
 
     public ngAfterContentInit(): void {
-        const list = this.tab_list.toArray();
+        const list = this.tab_list ? this.tab_list.toArray() : [];
         for (const tab of list) {
             tab.activeChange.subscribe(_ => {
                 for (const item of list) {
